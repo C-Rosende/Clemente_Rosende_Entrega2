@@ -26,8 +26,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav ul');
+    const nav = document.querySelector('nav');
+    const navMenu = document.querySelector('nav ul');
+    
     menuToggle.addEventListener('click', function() {
         nav.classList.toggle('open');
+        navMenu.style.display = nav.classList.contains('open') ? 'flex' : 'none';
+    });
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 764) {
+            navMenu.style.display = 'flex';
+        } else if (!nav.classList.contains('open')) {
+            navMenu.style.display = 'none';
+        }
     });
 });
